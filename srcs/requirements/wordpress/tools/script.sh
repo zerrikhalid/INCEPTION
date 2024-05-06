@@ -13,9 +13,9 @@ mv wp-cli.phar /usr/local/bin/wp
 
 wp core download --allow-root
 
-wp config create --dbname='db' --dbuser='khalid' --dbpass='pass' --dbhost='mariadb' --allow-root
+wp config create --dbname=$db --dbuser=$user --dbpass=$password --dbhost='mariadb' --allow-root
 
-wp core install --url='kzerri.42.fr' --title="Inception" --admin_user='kzerri42' --admin_password='pass' --allow-root
+wp core install --url='localhost' --title="Inception" --admin_user='kzerri42' --admin_password='pass' --allow-root
 
 wp user create khalid khalid@exo.com --role=author --user_pass='pass' --allow-root
 

@@ -4,12 +4,12 @@ RUN apt-get update -y && apt-get install mariadb-server -y && apt-get install ma
 
 COPY ./tools/config.cnf /etc/mysql/mariadb.conf.d/
 
-RUN mkdir /scripts
+COPY ./tools/script.sh /
 
-COPY ./tools/script.sh /scripts/
+RUN chmod +x  script.sh
 
-RUN chmod +x  scripts/script.sh
+RUN ./script.sh
 
 EXPOSE 3306
 
-CMD ["scripts/script.sh"]
+CMD ["mysqld"]
