@@ -1,0 +1,12 @@
+FROM debian:bullseye
+
+RUN apt-get update -y && apt-get install wget -y\
+    php-fpm\
+    php-mysql\
+    mariadb-client
+
+COPY ./tools/script.sh /
+
+EXPOSE 9000
+
+CMD [ "/tools/script.sh" ]
