@@ -7,14 +7,13 @@ services:
     build:
       context: requirements/mariadb
       dockerfile: dockerfile
-    image: mariadb:myimageL
+    image: mariadb:img
     env_file: .env
     volumes:
       - mariadb:/var/lib/mysql
     restart: unless-stopped
     expose:
       - "3306"
-
   nginx:
     container_name: nginx
     networks:
@@ -24,7 +23,7 @@ services:
     build:
       context: requirements/nginx
       dockerfile: dockerfile
-    image: nginx:myimage
+    image: nginx:img
     volumes:
       - wordpress:/var/www/html
     env_file: .env
@@ -39,7 +38,7 @@ services:
     build:
       context: requirements/wordpress
       dockerfile: dockerfile
-    image: wordpress:myimage
+    image: wordpress:img
     env_file: .env
     volumes:
       - wordpress:/var/www/html
@@ -55,13 +54,13 @@ volumes:
     driver_opts:
       type : 'none'
       o: 'bind'
-      device: '/home/freax/Desktop/wordpress'
+      device: '/Users/kzerri/Desktop/wordpress'
   mariadb:
     driver: local
     driver_opts:
        type : 'none'
        o: 'bind'
-       device: '/home/freax/Desktop/mariadb'
+       device: '/Users/kzerri/Desktop/mariadb'
 networks:
   mynetwork:
     driver: bridge
