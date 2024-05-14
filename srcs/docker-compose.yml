@@ -1,5 +1,4 @@
 services:
-
   mariadb:
     container_name: mariadb
     networks:
@@ -11,9 +10,11 @@ services:
     env_file: .env
     volumes:
       - mariadb:/var/lib/mysql
-    restart: unless-stopped
     expose:
       - "3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping"]
+    restart: on-failure
   nginx:
     container_name: nginx
     networks:
@@ -43,7 +44,8 @@ services:
     volumes:
       - wordpress:/var/www/html
     depends_on:
-      - mariadb
+      mariadb:
+        condition: service_healthy
     restart: on-failure
     expose:
       - "9000"

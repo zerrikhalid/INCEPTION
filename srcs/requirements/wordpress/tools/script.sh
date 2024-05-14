@@ -14,11 +14,11 @@ mv wp-cli.phar /usr/local/bin/wp
 
 wp core download --allow-root
 
-wp config create --dbname=$db --dbuser=$user --dbpass=$password --dbhost='mariadb' --allow-root
+wp config create --dbname=$db --dbuser=$user --dbpass=$password --dbhost=$dbhost --allow-root
 
-wp core install --url='kzerri.42.fr' --title="Inception" --admin_user='kzerri42' --admin_password='pass' --admin_email='kzerri@gmail.com' --allow-root
+wp core install --url=$url --title=$title --admin_user=$admin_user --admin_password=$admin_pass --admin_email=$admin_email --allow-root
 
-wp user create $user k@zerri.com --role=author --user_pass='pass' --allow-root
+wp user create $user $mail --role=author --user_pass=$user_pass --allow-root
 
 service php7.4-fpm start
 service php7.4-fpm stop
