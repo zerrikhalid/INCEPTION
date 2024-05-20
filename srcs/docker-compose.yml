@@ -56,13 +56,13 @@ volumes:
     driver_opts:
       type : 'none'
       o: 'bind'
-      device: '/Users/kzerri/Desktop/wordpress'
+      device: '/home/kzerri/data/wordpress'
   mariadb:
     driver: local
     driver_opts:
        type : 'none'
        o: 'bind'
-       device: '/Users/kzerri/Desktop/mariadb'
+       device: '/home/kzerri/data/mariadb'
 networks:
   mynetwork:
     driver: bridge

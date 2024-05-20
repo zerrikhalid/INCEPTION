@@ -18,9 +18,6 @@ wp config create --dbname=$db --dbuser=$user --dbpass=$password --dbhost=$dbhost
 
 wp core install --url=$url --title=$title --admin_user=$admin_user --admin_password=$admin_pass --admin_email=$admin_email --allow-root
 
-wp user create $user $mail --role=author --user_pass=$user_pass --allow-root
-
-service php7.4-fpm start
-service php7.4-fpm stop
+wp user create $user1 $mail --role=author --user_pass=$user_pass --allow-root
 
 php-fpm7.4 -F
